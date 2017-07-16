@@ -1,0 +1,69 @@
+{% extends "qa/base.html" %}
+{% load staticfiles %}
+{% load paginate_tags %}
+{% load mongoid_tags %}
+
+{% block content %}
+<div>
+    <table class="bordered highlight responsive-table">
+        <thead>
+            <tr>
+                <th data-field="title">标题</th>
+                <th data-field="tag">标签</th>
+                <th data-field="count">状态</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% if questions %}
+
+            {% paginate questions 20 %}
+            {% for q in questions %}
+            <tr>
+              <td>
+                  <a href="{% url 'qa:detail' q|private:'_id' %}">{{q.title|safe}}</a>
+                  <a id="q_detail" class="right hide-on-med-and-down" href="#{{ q|private:'_id' }}"><i class="material-icons left">info_outline</i></a>
+                  <div id="{{ q|private:'_id' }}" class="modal">
+                    <div class="modal-content">
+                      <h4>问题详情</h4>
+                      <p>{{ q.content|safe }}</p>
+                    </div>
+                    <div class="modal-footer">
+                      <a href="{% url 'qa:detail' q|private:'_id' %}">查看答案</a>
+                      <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">关闭</a>
+                    </div>
+                  </div>
+              </td>
+              <td>
+              {% for tag in q.tags %}
+                  <div class="chip">
+                    <a href="{% url 'qa:tag' tag %}">{{tag}}</a>
+                  </div>
+              {% endfor %}
+              </td>
+
+              <td>
+                  {% if  q.is_solved %}
+                    <a class="tooltipped" data-position="bottom" data-delay="50" data-tooltip="已解决">已解决</a>
+                  {% else %}
+                    <a class="tooltipped" data-position="bottom" data-delay="50" data-tooltip="未解决">未解决</a>
+                  {% endif %}
+                  <a class="tooltipped" data-position="bottom" data-delay="50" data-tooltip="回答数量">{{q.answer_count}}</a>
+                  <a class="tooltipped" data-position="bottom" data-delay="50" data-tooltip="查看数量">{{q.view_count}}</a>
+                  <a class="tooltipped" data-position="bottom" data-delay="50" data-tooltip="赞同数量">{{q.vote_count}}</a>
+              </td>
+            </tr>
+            {% endfor %}
+            {% endif %}
+        </tbody>
+    </table>
+
+    {% include 'qa/pagination.html' %}
+
+</div>
+    <script>
+        $(document).ready(function(){
+            // the "href" attribute of .modal-trigger must specify the modal ID that wants to be triggered
+            $('.modal').modal();
+        });
+    </script>
+{% endblock %}
