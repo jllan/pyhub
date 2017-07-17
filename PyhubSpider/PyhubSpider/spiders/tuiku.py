@@ -26,7 +26,7 @@ class TuikuSpider(scrapy.Spider):
     }
 
     def start_requests(self):
-        for page in range(0, 10):
+        for page in range(0, 5):
             if page>1:
                 self.headers['Referer'] = 'http://www.tuicool.com/topics/11130000?st=0&lang=1&pn={}'.format(page-1)
             yield Request('http://www.tuicool.com/topics/11130000?st=0&lang=1&pn={}'.format(page), headers=self.headers, callback=self.parse_list)

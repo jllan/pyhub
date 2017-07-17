@@ -7,7 +7,7 @@ connect(DBNAME)
 # Create your models here.
 class Questions(Document):
 
-    _id = StringField(primary_key=True)
+    # _id = StringField(primary_key=True)
     url = URLField()
     title = StringField()
     content = StringField()
@@ -21,3 +21,5 @@ class Questions(Document):
 
     meta = {'collection': 'questions'}  # 指明连接数据库的哪张表
 
+# for i in Questions.objects[:10]:  # 测试是否连接成功
+#     print(i.id)

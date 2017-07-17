@@ -13,7 +13,7 @@ class SegmentfaultSpider(scrapy.Spider):
     )
 
     def start_requests(self):
-        for page in range(1, 100):
+        for page in range(1, 10):
             yield Request('https://segmentfault.com/questions?page={}'.format(page), callback=self.parse_question)
 
 

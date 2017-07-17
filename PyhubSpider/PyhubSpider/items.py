@@ -2,7 +2,7 @@ from scrapy import Item, Field
 
 
 class QuestionItem(Item):
-    _id = Field()
+    # _id = Field()
     url = Field()
     title = Field()
     content = Field()
@@ -15,7 +15,7 @@ class QuestionItem(Item):
     source = Field()
 
 class ArticleItem(Item):
-    _id = Field()
+    # _id = Field()
     url = Field()
     title = Field()
     content = Field()

@@ -13,7 +13,7 @@ class StackoverflowSpider(scrapy.Spider):
     ]
 
     def start_requests(self):
-        for page in range(1, 20):
+        for page in range(1, 10):
             yield Request('https://api.stackexchange.com/2.2/questions?key=U4DMV*8nvpm3EOpvf69Rxw((&page={}&pagesize=100&order=desc&sort=votes&site=stackoverflow'.format(page), callback=self.parse_api)
 
 

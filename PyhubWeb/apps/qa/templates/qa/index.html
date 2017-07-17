@@ -20,15 +20,15 @@
             {% for q in questions %}
             <tr>
               <td>
-                  <a href="{% url 'qa:detail' q|private:'_id' %}">{{q.title|safe}}</a>
-                  <a id="q_detail" class="right hide-on-med-and-down" href="#{{ q|private:'_id' }}"><i class="material-icons left">info_outline</i></a>
-                  <div id="{{ q|private:'_id' }}" class="modal">
+                  <a href="{% url 'qa:detail' q|private:'id' %}">{{q.title|safe}}</a>
+                  <a id="q_detail" class="right hide-on-med-and-down" href="#{{ q|private:'id' }}"><i class="material-icons left">info_outline</i></a>
+                  <div id="{{ q|private:'id' }}" class="modal">
                     <div class="modal-content">
                       <h4>问题详情</h4>
                       <p>{{ q.content|safe }}</p>
                     </div>
                     <div class="modal-footer">
-                      <a href="{% url 'qa:detail' q|private:'_id' %}">查看答案</a>
+                      <a href="{% url 'qa:detail' q|private:'id' %}">查看答案</a>
                       <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">关闭</a>
                     </div>
                   </div>

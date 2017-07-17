@@ -30,7 +30,9 @@ def question_search(request,):
 
 
 def question_detail(request, question_id):
-    question = Questions.objects.filter("mongo_id"==question_id).first()
+    print(question_id)
+    question = Questions.objects.filter(id=question_id).first()
+    print(question.title)
     return render(request, 'qa/detail.html', {'question':question})
 
 

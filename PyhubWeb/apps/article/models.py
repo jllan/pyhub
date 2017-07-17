@@ -6,12 +6,13 @@ connect(DBNAME)
 
 
 class Articles(Document):
-    _id = StringField(primary_key=True)
+    # _id = StringField(primary_key=True)
     url = URLField()
     title = StringField()
     content = StringField()
     tags = ListField()
     source = URLField()
+    pub_date = DateTimeField()
 
     meta = {'collection': 'articles'}  # 指明连接数据库的哪张表
 
