@@ -4,7 +4,6 @@ from .models import Articles
 
 def article_index(request):
     articles = Articles.objects
-    print(articles[0].title)
     context = {
         'articles': articles,
     }
@@ -31,10 +30,7 @@ def article_search(request,):
 
 
 def article_detail(request, article_id):
-    print(article_id)
     article = Articles.objects.filter(id=article_id).first()
-    print(article.title)
-    print(article.content)
     return render(request, 'article/detail.html', {'article':article})
 
 

@@ -1,7 +1,7 @@
 <ul class="pagination">
     {# 上一页 #}
-    {% if questions.has_previous %}
-        <li class="waves-effect"><a href="?page={{ questions.previous_page_number }}"><i class="material-icons">chevron_left</i></a></li>
+    {% if articles.has_previous %}
+        <li class="waves-effect"><a href="?page={{ articles.previous_page_number }}"><i class="material-icons">chevron_left</i></a></li>
     {% else %}
         <li class="disabled"><a href="#!"><i class="material-icons">chevron_left</i></a></li>
     {% endif %}
@@ -37,8 +37,8 @@
     {% endif %}
 
     {# 下一页 #}
-    {% if questions.has_next %}
-        <li class="waves-effect"><a href="?page={{ questions.next_page_number }}"><i class="material-icons">chevron_right</i></a></li>
+    {% if articles.has_next %}
+        <li class="waves-effect"><a href="?page={{ articles.next_page_number }}"><i class="material-icons">chevron_right</i></a></li>
     {% else %}
         <li class="disabled"><a href="#!"><i class="material-icons">chevron_right</i></a></li>
     {% endif %}

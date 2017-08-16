@@ -4,6 +4,7 @@ from .models import Questions
 
 def question_index(request):
     questions = Questions.objects
+    print(len(questions))
     context = {
         'questions': questions,
     }
@@ -30,9 +31,7 @@ def question_search(request,):
 
 
 def question_detail(request, question_id):
-    print(question_id)
     question = Questions.objects.filter(id=question_id).first()
-    print(question.title)
     return render(request, 'qa/detail.html', {'question':question})
 
 

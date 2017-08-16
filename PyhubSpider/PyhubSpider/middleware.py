@@ -18,7 +18,8 @@ class UserAgentMiddleware(object):
 class ProxyMiddleware(object):
     """ 设置代理 """
     def process_request(self, request, spider):
-        proxy = get_proxy()
+        # proxy = get_proxy()
+        proxy = '121.22.212.84:8118'
         print('使用代理：', proxy)
         request.meta['proxy'] = 'http://'+proxy
 
