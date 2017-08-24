@@ -1,0 +1,33 @@
+{% extends "job/base.html" %}
+{% load staticfiles %}
+{% load paginate_tags %}
+{% load mongoid_tags %}
+
+{% block content %}
+<div>
+    <table class="bordered highlight responsive-table">
+        <thead>
+            <tr>
+                <th data-field="title">职位信息</th>
+                <th data-field="count">公司介绍</th>
+            </tr>
+        </thead>
+        <tbody>
+
+            {% for job in jobs.object_list %}
+            <tr>
+              <td>
+                  <a href="{% url 'job:detail' job|private:'position_id' %}">{{job.position_name|safe}}</a>
+              </td>
+              <td>
+                  <a>{{job.company_short_name}}</a>
+              </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    {% include 'job/pagination.html' %}
+
+</div>
+{% endblock %}

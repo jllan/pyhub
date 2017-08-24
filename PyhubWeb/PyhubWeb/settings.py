@@ -42,8 +42,10 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     # 'allauth.socialaccount',
+    'pure_pagination',
     'qa',
     'article',
+    'job',
 ]
 
 MIDDLEWARE = [
@@ -129,3 +131,9 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, "static/")
+
+PAGINATION_SETTINGS = {
+  'PAGE_RANGE_DISPLAYED': 10,
+  'MARGIN_PAGES_DISPLAYED': 2,
+  'SHOW_FIRST_PAGE_WHEN_INVALID': True,
+}

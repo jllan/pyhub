@@ -14,10 +14,7 @@
             </tr>
         </thead>
         <tbody>
-            {% if questions %}
-
-            {% paginate questions 30 %}
-            {% for q in questions %}
+            {% for q in questions.object_list %}
             <tr>
               <td>
                   <a href="{% url 'qa:detail' q|private:'id' %}">{{q.title|safe}}</a>
@@ -53,7 +50,6 @@
               </td>
             </tr>
             {% endfor %}
-            {% endif %}
         </tbody>
     </table>
 

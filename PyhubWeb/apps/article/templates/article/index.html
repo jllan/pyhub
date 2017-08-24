@@ -14,10 +14,8 @@
             </tr>
         </thead>
         <tbody>
-            {% if articles %}
 
-            {% paginate articles 20 %}
-            {% for a in articles %}
+            {% for a in articles.object_list %}
             <tr>
               <td>
                   <a href="{% url 'article:detail' a|private:'id' %}">{{a.title|safe}}</a>
@@ -46,7 +44,6 @@
               </td>
             </tr>
             {% endfor %}
-            {% endif %}
         </tbody>
     </table>
 

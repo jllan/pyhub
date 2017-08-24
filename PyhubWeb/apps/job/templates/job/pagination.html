@@ -1,14 +1,14 @@
 <ul class="pagination">
 {# 上一页 #}
-{% if articles.has_previous %}
-  <li class="waves-effect"><a href="?page={{ articles.previous_page_number.querystring }}"><i class="material-icons">chevron_left</i></a></li>
+{% if jobs.has_previous %}
+  <li class="waves-effect"><a href="?page={{ jobs.previous_page_number.querystring }}"><i class="material-icons">chevron_left</i></a></li>
 {% else %}
   <li class="disabled"><a href="#!"><i class="material-icons">chevron_left</i></a></li>
 {% endif %}
 
-{% for page in articles.pages %}
+{% for page in jobs.pages %}
    {% if page %}
-       {% ifequal page articles.number %}
+       {% ifequal page jobs.number %}
             {# 当前页页 #}
             <li class="active"><a>{{ page }}</a></li>
        {% else %}
@@ -21,8 +21,8 @@
 {% endfor %}
 
 {# 下一页 #}
-{% if articles.has_next %}
-    <li class="waves-effect"><a href="?page={{ articles.next_page_number.querystring }}"><i class="material-icons">chevron_right</i></a></li>
+{% if jobs.has_next %}
+    <li class="waves-effect"><a href="?page={{ jobs.next_page_number.querystring }}"><i class="material-icons">chevron_right</i></a></li>
 {% else %}
     <li class="disabled"><a href="#!"><i class="material-icons">chevron_right</i></a></li>
 {% endif %}
