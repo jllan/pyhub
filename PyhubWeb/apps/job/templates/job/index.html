@@ -1,31 +1,32 @@
 {% extends "job/base.html" %}
 {% load staticfiles %}
-{% load paginate_tags %}
 {% load mongoid_tags %}
 
 {% block content %}
 <div>
-    <table class="bordered highlight responsive-table">
-        <thead>
-            <tr>
-                <th data-field="title">职位信息</th>
-                <th data-field="count">公司介绍</th>
-            </tr>
-        </thead>
-        <tbody>
 
-            {% for job in jobs.object_list %}
-            <tr>
-              <td>
-                  <a href="{% url 'job:detail' job|private:'position_id' %}">{{job.position_name|safe}}</a>
-              </td>
-              <td>
-                  <a>{{job.company_short_name}}</a>
-              </td>
-            </tr>
-            {% endfor %}
-        </tbody>
-    </table>
+    {% for job in jobs.object_list %}
+     <div class="row">
+        <div class="col s12">
+          <div class="card small">
+            <div class="card-content">
+              <span class="card-title col s7"><a href="{% url 'job:detail' job|private:'position_id' %}">{{job.position_name|safe}}</a>{{ job.city }}-{{ job.district}}</span>
+              <span class="card-title col s5"><a>{{job.company_short_name}}</a></span>
+              <span class="card-title col s7">{{ job.salary}} {{ job.work_year }}/{{ job.education}}</span>
+              <span class="card-title col s5">{{job.industry_field}}/{{ job.finance_stage }}</span>
+            </div>
+            <div class="card-action">
+              <span class="card-title col s7">
+                  {% for label in job.position_labels %}
+                      <a class="chip">{{ label }}</a>
+                  {% endfor %}
+              </span>
+              <span class="card-title col s5">{{job.position_advantage}}</span>
+            </div>
+          </div>
+        </div>
+     </div>
+    {% endfor %}
 
     {% include 'job/pagination.html' %}
 

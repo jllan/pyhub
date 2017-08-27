@@ -1,6 +1,5 @@
-{% extends "qa/base.html" %}
+{% extends "job/base.html" %}
 {% load staticfiles %}
-{% load paginate_tags %}
 {% load mongoid_tags %}
 
 {% block content %}
@@ -58,7 +57,6 @@
 </div>
     <script>
         $(document).ready(function(){
-            // the "href" attribute of .modal-trigger must specify the modal ID that wants to be triggered
             $('.modal').modal();
         });
     </script>

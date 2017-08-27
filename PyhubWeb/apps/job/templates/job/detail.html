@@ -1,33 +1,63 @@
-{% extends "article/base.html" %}
+{% extends "job/base.html" %}
 
 {% block content %}
 
   <div class="row">
-        <div class="col s12 m12">
-          <h2 class="header">{{ article.title| safe }}</h2>
-          <div class="card">
-            <div class="card-action">
-              <div class="article-meta">
-                {# 文章标签 #}
-                <i class="material-icons">label</i>
-                {% for tag in article.tags %}
-                  <div class="chip">
-                    <a href="{% url 'article:tag' tag %}">{{tag}}</a>
-                  </div>
-                {% endfor %}
-              </div>
-            </div>
-
-            <div class="card-content">
-                <hr>
-                <p>{{ article.content | safe }}</p>
-            </div>
-
-            <div class="card-action">
-                来源：<a class="mdl-button" href="{{ article.source }}">{{ article.source }}</a>
-            </div>
+      <div class="col s8">
+        <h2 class="header">{{ job.position_name| safe }}</h2>
+        <div class="card">
+          <div class="card-action">
+            {{ job.salary }}/{{job.work_year}}/{{job.education}}/{{job.job_nature}}
+            <p>
+            {{job.position_labels}}
+            <p>
+            {{job.job_address}}
+            <p>
+            {{job.pub_time}}
           </div>
+          <div class="card-content">
+
+              <hr>
+              <p>{{ job_detail | safe }}</p>
           </div>
+
+          <div class="card-action">
+              来源：<a class="mdl-button" href="https://www.lagou.com/jobs/{{job.position_id}}.html">"https://www.lagou.com/jobs/{{job.position_id}}.html"</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="col s4">
+        <h2 class="header"><a href="{{ job.company_link }}">{{ job.company_short_name | safe }}</a></h2>
+        <div class="card">
+          <div class="card-image">
+              <img src="{{ job.company_logo}}">
+          </div>
+          <div class="card-content">
+              <hr>
+              <a class="tooltipped" data-position="bottom" data-delay="50" data-tooltip="融资阶段">{{ job.finance_stage }}</a>
+              <hr>
+              <a class="tooltipped" data-position="bottom" data-delay="50" data-tooltip="所属行业">{{job.industry_field}}</a>
+              <hr>
+              <a class="tooltipped" data-position="bottom" data-delay="50" data-tooltip="公司规模">{{ job.company_size }}</a>
+              <hr>
+              <a class="tooltipped" data-position="bottom" data-delay="50" data-tooltip="公司主页">{{ job.company_link | safe }}</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="col s4">
+        <h2 class="header">相似职位</h2>
+        <div class="card">
+          <div class="card-content">
+          </div>
+        </div>
+      </div>
+  </div>
+
+
+
+
   </div>
 
 

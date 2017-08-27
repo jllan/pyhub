@@ -8,5 +8,4 @@ urlpatterns = [
     url(r'^$', views.job_index, name='index'),
     url(r'^detail/(?P<job_id>\w+)$', cache_page(60 * 15)(views.job_detail), name='detail'),
     url(r'^search/$', views.job_search, name='search'),
-    url(r'^tag/(?P<tag_name>.+)$', views.job_tag, name='tag'),
 ]

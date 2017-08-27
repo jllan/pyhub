@@ -18,6 +18,7 @@ def article_index(request):
         'articles': articles
     })
 
+
 def article_tag(request, tag_name):
     articles = Articles.objects.filter(tags=tag_name).order_by("-pub_date")
     try:
